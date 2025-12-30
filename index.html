@@ -22,11 +22,11 @@
 
         header h1 {
             margin: 0;
-            font-size: 26px
+            font-size: 26px;
         }
 
         header p {
-            margin: 6px 0 0
+            margin: 6px 0 0;
         }
 
         .section {
@@ -53,7 +53,7 @@
         }
 
         .product:hover {
-            transform: translateY(-4px)
+            transform: translateY(-4px);
         }
 
         .product img {
@@ -88,57 +88,59 @@
     <section class="section">
         <h2>🛍️ Our Products</h2>
 
-        <div class="products">
+        <div class="products" id="products">
 
-            <a href="product.html?img=image2.jfif&name=Handmade Item&price=₹499" class="product">
+            <!-- 🔹 OLD MANUAL PRODUCTS (UNCHANGED) -->
+
+            <a href="product.html?img=image2.jfif&name=Handmade Item&price=499" class="product">
                 <img src="image2.jfif">
                 <h3>Handmade Item</h3>
                 <p>₹499</p>
             </a>
 
-            <a href="product.html?img=image3.jfif&name=Decor Item&price=₹399" class="product">
+            <a href="product.html?img=image3.jfif&name=Decor Item&price=399" class="product">
                 <img src="image3.jfif">
                 <h3>Decor Item</h3>
                 <p>₹399</p>
             </a>
 
-            <a href="product.html?img=image4.jfif&name=Wall Art&price=₹599" class="product">
+            <a href="product.html?img=image4.jfif&name=Wall Art&price=599" class="product">
                 <img src="image4.jfif">
                 <h3>Wall Art</h3>
                 <p>₹599</p>
             </a>
 
-            <a href="product.html?img=image5.jfif&name=Gift Item&price=₹299" class="product">
+            <a href="product.html?img=image5.jfif&name=Gift Item&price=299" class="product">
                 <img src="image5.jfif">
                 <h3>Gift Item</h3>
                 <p>₹299</p>
             </a>
 
-            <a href="product.html?img=image6.jfif&name=Home Decor&price=₹699" class="product">
+            <a href="product.html?img=image6.jfif&name=Home Decor&price=699" class="product">
                 <img src="image6.jfif">
                 <h3>Home Decor</h3>
                 <p>₹699</p>
             </a>
 
-            <a href="product.html?img=image7.jfif&name=Craft Item&price=₹349" class="product">
+            <a href="product.html?img=image7.jfif&name=Craft Item&price=349" class="product">
                 <img src="image7.jfif">
                 <h3>Craft Item</h3>
                 <p>₹349</p>
             </a>
 
-            <a href="product.html?img=image8.jfif&name=Hand Art&price=₹449" class="product">
+            <a href="product.html?img=image8.jfif&name=Hand Art&price=449" class="product">
                 <img src="image8.jfif">
                 <h3>Hand Art</h3>
                 <p>₹449</p>
             </a>
 
-            <a href="product.html?img=image9.jfif&name=Showpiece&price=₹549" class="product">
+            <a href="product.html?img=image9.jfif&name=Showpiece&price=549" class="product">
                 <img src="image9.jfif">
                 <h3>Showpiece</h3>
                 <p>₹549</p>
             </a>
 
-            <a href="product.html?img=image10.jfif&name=Decor Piece&price=₹649" class="product">
+            <a href="product.html?img=image10.jfif&name=Decor Piece&price=649" class="product">
                 <img src="image10.jfif">
                 <h3>Decor Piece</h3>
                 <p>₹649</p>
@@ -146,6 +148,23 @@
 
         </div>
     </section>
+
+    <!-- 🔹 ADMIN PANEL PRODUCTS AUTO LOAD -->
+    <script>
+        let adminProducts = JSON.parse(localStorage.getItem("products")) || [];
+        let box = document.getElementById("products");
+
+        adminProducts.forEach(p => {
+            box.innerHTML += `
+  <a href="product.html?img=${p.img}&name=${encodeURIComponent(p.name)}&price=${p.price}"
+     class="product">
+    <img src="${p.img}">
+    <h3>${p.name}</h3>
+    <p>₹${p.price}</p>
+  </a>
+  `;
+        });
+    </script>
 
 </body>
 
